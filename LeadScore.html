@@ -1,25 +1,20 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lead Score – Embed</title></head>
-<body style="margin:0;padding:16px;background:#ececec;">
-<!-- Lead Score card: copy the iframe below into the host page -->
-<iframe title="Lead Score" loading="lazy"
-  style="width:100%;max-width:470px;height:560px;border:0;border-radius:16px;display:block;"
-  srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;UTF-8&quot;&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
-&lt;title&gt;Lead Score&lt;/title&gt;
-&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
-&lt;style&gt;
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lead Score</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+<style>
   :root{
     --card:#ffffff; --text:#1f1f1f; --muted:#555; --ring:#f5e21b; --track:#e6e6e6;
     --pos:#2f7ed8; --neg:#e5533d; --line:#ececec; --feedback:#f4f4f4; --btn:#d4d4d4;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:&#x27;Poppins&#x27;,system-ui,-apple-system,&#x27;Segoe UI&#x27;,sans-serif;background:transparent;color:var(--text)}
-  .card{background:var(--card);border-radius:16px;width:100%;padding:18px 22px 20px}
+  html,body{height:100%;margin:0;overflow:hidden}
+  body{font-family:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;background:transparent;color:var(--text)}
+  .card{background:var(--card);border-radius:16px;width:100%;height:100%;padding:18px 22px 18px;display:flex;flex-direction:column}
+  .spacer{flex:1}
 
   .header{display:flex;align-items:center;gap:16px}
   .ring{position:relative;width:56px;height:56px;flex-shrink:0}
@@ -36,7 +31,7 @@
 
   ul{list-style:none}
   li{position:relative;padding-left:16px;font-size:14px;color:var(--muted);line-height:1.45;margin-bottom:9px}
-  li::before{content:&quot;&quot;;position:absolute;left:2px;top:8px;width:4px;height:4px;background:#333}
+  li::before{content:"";position:absolute;left:2px;top:8px;width:4px;height:4px;background:#333}
   .pos .v{color:var(--pos)}
   .neg .v{color:var(--neg)}
 
@@ -46,73 +41,72 @@
   .fb button{width:28px;height:28px;border:1px solid var(--btn);background:#fff;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s}
   .fb button svg{width:15px;height:15px}
   .fb button:focus-visible{outline:2px solid var(--pos);outline-offset:2px}
-  .fb button[aria-pressed=&quot;true&quot;].up{background:#e8f1fc;border-color:var(--pos)}
-  .fb button[aria-pressed=&quot;true&quot;].down{background:#fdecea;border-color:var(--neg)}
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div class=&quot;card&quot;&gt;
-  &lt;div class=&quot;header&quot;&gt;
-    &lt;div class=&quot;ring&quot;&gt;
-      &lt;svg width=&quot;56&quot; height=&quot;56&quot; viewBox=&quot;0 0 56 56&quot;&gt;
-        &lt;circle cx=&quot;28&quot; cy=&quot;28&quot; r=&quot;24&quot; fill=&quot;none&quot; stroke=&quot;var(--track)&quot; stroke-width=&quot;4&quot;/&gt;
-        &lt;circle id=&quot;arc&quot; cx=&quot;28&quot; cy=&quot;28&quot; r=&quot;24&quot; fill=&quot;none&quot; stroke=&quot;var(--ring)&quot; stroke-width=&quot;4&quot;/&gt;
-      &lt;/svg&gt;
-      &lt;div class=&quot;val&quot; id=&quot;scoreVal&quot;&gt;58&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;title&quot;&gt;Lead Score&lt;/div&gt;
-  &lt;/div&gt;
+  .fb button[aria-pressed="true"].up{background:#e8f1fc;border-color:var(--pos)}
+  .fb button[aria-pressed="true"].down{background:#fdecea;border-color:var(--neg)}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <div class="ring">
+      <svg width="56" height="56" viewBox="0 0 56 56">
+        <circle cx="28" cy="28" r="24" fill="none" stroke="var(--track)" stroke-width="4"/>
+        <circle id="arc" cx="28" cy="28" r="24" fill="none" stroke="var(--ring)" stroke-width="4"/>
+      </svg>
+      <div class="val" id="scoreVal">58</div>
+    </div>
+    <div class="title">Lead Score</div>
+  </div>
 
-  &lt;p class=&quot;subtitle&quot;&gt;Review Retail Lead Score&lt;/p&gt;
+  <p class="subtitle">Review Retail Lead Score</p>
 
-  &lt;hr&gt;
+  <hr>
 
-  &lt;div class=&quot;section-head&quot;&gt;
-    &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;#1f1f1f&quot; stroke-width=&quot;1.6&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M7 10v11H3V10h4zM7 10l4-8c1.7 0 3 1.3 3 3v4h5.3c1.2 0 2.1 1.1 1.9 2.3l-1.4 8.1c-.2 1-1 1.6-2 1.6H7&quot;/&gt;&lt;/svg&gt;
-    &lt;h3&gt;Positive Factors&lt;/h3&gt;
-  &lt;/div&gt;
-  &lt;ul class=&quot;pos&quot;&gt;
-    &lt;li&gt;Monthly Income: &lt;span class=&quot;v&quot;&gt;95000&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;Existing Relationship: &lt;span class=&quot;v&quot;&gt;Savings Account (2 Yrs)&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;Employment Type: &lt;span class=&quot;v&quot;&gt;Salaried&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;Digital Engagement: &lt;span class=&quot;v&quot;&gt;Medium&lt;/span&gt;&lt;/li&gt;
-  &lt;/ul&gt;
+  <div class="section-head">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#1f1f1f" stroke-width="1.6" stroke-linejoin="round"><path d="M7 10v11H3V10h4zM7 10l4-8c1.7 0 3 1.3 3 3v4h5.3c1.2 0 2.1 1.1 1.9 2.3l-1.4 8.1c-.2 1-1 1.6-2 1.6H7"/></svg>
+    <h3>Positive Factors</h3>
+  </div>
+  <ul class="pos">
+    <li>Monthly Income: <span class="v">95000</span></li>
+    <li>Existing Relationship: <span class="v">Savings Account (2 Yrs)</span></li>
+    <li>Employment Type: <span class="v">Salaried</span></li>
+    <li>Digital Engagement: <span class="v">Medium</span></li>
+  </ul>
 
-  &lt;hr&gt;
+  <hr>
 
-  &lt;div class=&quot;section-head&quot;&gt;
-    &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;#1f1f1f&quot; stroke-width=&quot;1.6&quot; stroke-linejoin=&quot;round&quot; style=&quot;transform:scaleY(-1)&quot;&gt;&lt;path d=&quot;M7 10v11H3V10h4zM7 10l4-8c1.7 0 3 1.3 3 3v4h5.3c1.2 0 2.1 1.1 1.9 2.3l-1.4 8.1c-.2 1-1 1.6-2 1.6H7&quot;/&gt;&lt;/svg&gt;
-    &lt;h3&gt;Negative Factors&lt;/h3&gt;
-  &lt;/div&gt;
-  &lt;ul class=&quot;neg&quot;&gt;
-    &lt;li&gt;Credit Bureau Score: &lt;span class=&quot;v&quot;&gt;684&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;Existing EMI Obligations: &lt;span class=&quot;v&quot;&gt;38000&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;Average Monthly Balance: &lt;span class=&quot;v&quot;&gt;22000&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;Credit Enquiries (Last 6 Months): &lt;span class=&quot;v&quot;&gt;5&lt;/span&gt;&lt;/li&gt;
-  &lt;/ul&gt;
+  <div class="section-head">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#1f1f1f" stroke-width="1.6" stroke-linejoin="round" style="transform:scaleY(-1)"><path d="M7 10v11H3V10h4zM7 10l4-8c1.7 0 3 1.3 3 3v4h5.3c1.2 0 2.1 1.1 1.9 2.3l-1.4 8.1c-.2 1-1 1.6-2 1.6H7"/></svg>
+    <h3>Negative Factors</h3>
+  </div>
+  <ul class="neg">
+    <li>Credit Bureau Score: <span class="v">684</span></li>
+    <li>Existing EMI Obligations: <span class="v">38000</span></li>
+    <li>Average Monthly Balance: <span class="v">22000</span></li>
+    <li>Credit Enquiries (Last 6 Months): <span class="v">5</span></li>
+  </ul>
 
-  &lt;div class=&quot;feedback&quot;&gt;
-    &lt;span&gt;Is this Score helpful?&lt;/span&gt;
-    &lt;div class=&quot;fb&quot;&gt;
-      &lt;button class=&quot;up&quot; aria-label=&quot;Helpful&quot; aria-pressed=&quot;false&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;#333&quot; stroke-width=&quot;1.6&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M7 10v11H3V10h4zM7 10l4-8c1.7 0 3 1.3 3 3v4h5.3c1.2 0 2.1 1.1 1.9 2.3l-1.4 8.1c-.2 1-1 1.6-2 1.6H7&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
-      &lt;button class=&quot;down&quot; aria-label=&quot;Not helpful&quot; aria-pressed=&quot;false&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;#333&quot; stroke-width=&quot;1.6&quot; stroke-linejoin=&quot;round&quot; style=&quot;transform:scaleY(-1)&quot;&gt;&lt;path d=&quot;M7 10v11H3V10h4zM7 10l4-8c1.7 0 3 1.3 3 3v4h5.3c1.2 0 2.1 1.1 1.9 2.3l-1.4 8.1c-.2 1-1 1.6-2 1.6H7&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+  <div class="spacer"></div>
+  <div class="feedback">
+    <span>Is this Score helpful?</span>
+    <div class="fb">
+      <button class="up" aria-label="Helpful" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.6" stroke-linejoin="round"><path d="M7 10v11H3V10h4zM7 10l4-8c1.7 0 3 1.3 3 3v4h5.3c1.2 0 2.1 1.1 1.9 2.3l-1.4 8.1c-.2 1-1 1.6-2 1.6H7"/></svg></button>
+      <button class="down" aria-label="Not helpful" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.6" stroke-linejoin="round" style="transform:scaleY(-1)"><path d="M7 10v11H3V10h4zM7 10l4-8c1.7 0 3 1.3 3 3v4h5.3c1.2 0 2.1 1.1 1.9 2.3l-1.4 8.1c-.2 1-1 1.6-2 1.6H7"/></svg></button>
+    </div>
+  </div>
+</div>
 
-&lt;script&gt;
-  const score = parseInt(document.getElementById(&#x27;scoreVal&#x27;).textContent, 10);
-  const arc = document.getElementById(&#x27;arc&#x27;), C = 2 * Math.PI * 24;
-  arc.setAttribute(&#x27;stroke-dasharray&#x27;, C);
-  arc.setAttribute(&#x27;stroke-dashoffset&#x27;, C * (1 - score / 100));
-  const fb = document.querySelectorAll(&#x27;.fb button&#x27;);
-  fb.forEach(b =&gt; b.addEventListener(&#x27;click&#x27;, () =&gt; {
-    const on = b.getAttribute(&#x27;aria-pressed&#x27;) === &#x27;true&#x27;;
-    fb.forEach(x =&gt; x.setAttribute(&#x27;aria-pressed&#x27;,&#x27;false&#x27;));
-    b.setAttribute(&#x27;aria-pressed&#x27;, String(!on));
+<script>
+  const score = parseInt(document.getElementById('scoreVal').textContent, 10);
+  const arc = document.getElementById('arc'), C = 2 * Math.PI * 24;
+  arc.setAttribute('stroke-dasharray', C);
+  arc.setAttribute('stroke-dashoffset', C * (1 - score / 100));
+  const fb = document.querySelectorAll('.fb button');
+  fb.forEach(b => b.addEventListener('click', () => {
+    const on = b.getAttribute('aria-pressed') === 'true';
+    fb.forEach(x => x.setAttribute('aria-pressed','false'));
+    b.setAttribute('aria-pressed', String(!on));
   }));
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-"></iframe>
-</body></html>
+</script>
+</body>
+</html>
